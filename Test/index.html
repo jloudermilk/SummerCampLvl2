@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Megaman is AWESOME!</title>
+        <script src="../build/phaser.min.js"></script>
+		<script src="src/Boot.js"></script>
+		<script src="src/Game.js"></script>
+    </head>
+    <body>
+
+    <script type="text/javascript">
+
+    window.onload = function() {
+
+        var game = new Phaser.Game(800, 600, Phaser.AUTO, '');
+		
+        game.state.add('Boot', Breakout.Boot);
+		game.state.add('Game', Breakout.Game);
+		
+		game.state.start('Boot');
+};
+    </script>
+
+    </body>
+</html>
