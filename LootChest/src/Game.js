@@ -33,16 +33,16 @@ LootChest.Game.prototype =
 		
 		this.physics.arcade.gravity.y = 250;
 		
-		this.player = new LootChest.Player(this,this.layer,32,32);
+		this.player = new LootChest.Player(this.game,32,32);
 		
-		//this.camera.follow(this.player);
-		
-		
+		this.camera.follow(this.player);
+
 
 	},
 	
 	update: function()
 	{
+	this.physics.arcade.collide(this.player,this.layer);
 		this.player.update();
 	}
 	

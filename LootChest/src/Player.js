@@ -10,8 +10,7 @@ LootChest.Player = function(game,layer,x,y)
 		
 		Phaser.Sprite.call(this,game,x,y,'player');
 		
-		this.physics = game.physics.arcade;
-		this.physics.enable(this);
+		game.physics.enable(this, Phaser.Physics.ARCADE);
 		
 		this.body.bounce.y  = 0.2;
 		
@@ -23,12 +22,15 @@ LootChest.Player = function(game,layer,x,y)
 		this.animations.add('right',[5,6,7,8],10, true );
 		this.animations.add('turn',[4],20,true);
 		
-		this.cursors = this.input.keyboard.createCursorKeys();
-		this.jumpButton = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+		this.cursors = game.input.keyboard.createCursorKeys();
+		this.jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+		
+		game.add.existing(this);
 };
 
 LootChest.Player.prototype = Object.create(Phaser.Sprite.prototype);
 LootChest.Player.prototype.constructor = LootChest.Player;
 LootChest.Player.prototype.update = function() 
 {
+
 };
