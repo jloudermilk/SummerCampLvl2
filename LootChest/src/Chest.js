@@ -3,7 +3,7 @@ LootChest.Chest = function(game,x,y)
 		this.game = game;
 		this.opened = false;
 		
-		this.chipAmount = 2;
+		this.chipAmount = 20;
 		
 		Phaser.Sprite.call(this,game,x,y,'chest');
 		
@@ -12,9 +12,8 @@ LootChest.Chest = function(game,x,y)
 		this.body.immovable = true;
 		
 		
-		this.body.setSize(26,16,0,0);
 		this.animations.add('idle',[2,3,4,5,6],10, true );
-		this.animations.add('open',[0,7,8,9,10,11],10, false );
+		this.animations.add('open',[0,7,8,9,10,11,1],10, false );
 		this.animations.add('empty',[1],20,true);
 		
 		this.animations.play('idle');
@@ -24,11 +23,13 @@ LootChest.Chest = function(game,x,y)
 
 LootChest.Chest.prototype = Object.create(Phaser.Sprite.prototype);
 LootChest.Chest.prototype.constructor = LootChest.Chest;
-LootChest.Chest.prototype.open = function(player,thing)
+LootChest.Chest.prototype.open = function(player)
 {
 	if(!this.opened){
 	player.chipAmount += this.chipAmount;
 	this.opened = true;
+	this.animations.play('open');
 	}
+	
 	
 }
